@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-app-green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: payment
+      version: green
+  template:
+    metadata:
+      labels:
+        app: payment
+        version: green
+    spec:
+      containers:
+      - name: web
+        image: nginx:1.25-alpine
+        ports:
+        - containerPort: 80

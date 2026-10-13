@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-app-blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: payment
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: payment
+        version: blue
+    spec:
+      containers:
+      - name: web
+        image: nginx:1.24-alpine
+        ports:
+        - containerPort: 80
